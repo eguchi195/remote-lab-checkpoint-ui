@@ -40,8 +40,8 @@ export default function PvChart({ measurements }: Props) {
             stroke="#6b7280"
           />
           <Tooltip
-            formatter={(v: number) => `${v} W`}
-            labelFormatter={(v) => `${v} V`}
+            formatter={(value) => `${value} W`}
+            labelFormatter={(label) => `${label} V`}
           />
           <Legend verticalAlign="top" height={28} />
           <Line
