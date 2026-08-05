@@ -1,24 +1,25 @@
-export type Level = 'basic_a' | 'basic_b' | 'advanced';
+export type Level = 'prediction' | 'review' | 'advanced';
 
 export interface Question {
   level: Level;
-  theme: string;
+  /** 学習者に表示するラベル */
+  label: string;
   text: string;
   choices: string[];
   correctIndex: number;
 }
 
 export const QUESTIONS: Record<Level, Question> = {
-  basic_a: {
-    level: 'basic_a',
-    theme: '降圧昇圧',
+  prediction: {
+    level: 'prediction',
+    label: '予測クイズ',
     text: '降圧コンバータのデューティ比を上げると、出力電圧はどうなると予想しますか？',
     choices: ['上がる', '下がる', '変わらない'],
     correctIndex: 0,
   },
-  basic_b: {
-    level: 'basic_b',
-    theme: '降圧昇圧',
+  review: {
+    level: 'review',
+    label: '確認問題',
     text: 'デューティ比を上げていくと、出力電圧はどのように変化すると考えられますか？',
     choices: [
       'デューティ比にほぼ比例して変化する',
@@ -29,7 +30,7 @@ export const QUESTIONS: Record<Level, Question> = {
   },
   advanced: {
     level: 'advanced',
-    theme: '降圧昇圧',
+    label: '応用問題',
     text: 'デューティ比を上げると出力電圧は上がりますが、太陽電池の発電量（電力）も必ず増えるとは限りません。その理由として最も近いものはどれですか？',
     choices: [
       '発電量は、最大電力点を超えると逆に減ることがあるから',

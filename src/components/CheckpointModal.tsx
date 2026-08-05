@@ -27,7 +27,7 @@ export default function CheckpointModal({ question, onAnswered }: Props) {
 
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-      <p className="mb-1 text-xs font-bold tracking-wide text-blue-600">判断ポイント</p>
+      <p className="mb-1 text-xs font-bold tracking-wide text-blue-600">{question.label}</p>
       <p className="mb-4 text-base font-bold leading-relaxed text-slate-800">{question.text}</p>
 
       <div className="space-y-2">
@@ -71,7 +71,7 @@ export default function CheckpointModal({ question, onAnswered }: Props) {
             onClick={() => onAnswered(selected!, result.correct)}
             className="w-full rounded bg-slate-800 py-3 font-bold text-white"
           >
-            実験して確かめる
+            {question.level === 'prediction' ? '実験して確かめる' : '結果を見る'}
           </button>
         </div>
       )}

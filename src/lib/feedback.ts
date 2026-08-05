@@ -3,7 +3,7 @@ import type { Question } from '../data/questions';
 /**
  * 学習者の回答に対する解説文を生成する。
  *
- * 実システムでは AWS Bedrock の LLM を呼び出しているが、
+ * 実際のシステムでは AWS Bedrock の LLM を呼び出しているが、
  * 本リポジトリは公開デモのため API キーを持たない。
  * 環境変数が設定されていない場合は、あらかじめ用意した
  * 解説文にフォールバックする構成としている。
@@ -11,7 +11,7 @@ import type { Question } from '../data/questions';
 
 const USE_LLM = import.meta.env.VITE_FEEDBACK_API_URL !== undefined;
 
-/** 実システムで使用しているプロンプトの構造 */
+/** 実際のシステムで使用しているプロンプトの構造 */
 function buildPrompt(question: Question, selectedIndex: number): string {
   return [
     'あなたは電気電子工学の学習支援を行う教員です。',
@@ -37,13 +37,13 @@ export function stripMarkdown(text: string): string {
 
 /** デモ用のフォールバック解説 */
 const MOCK_FEEDBACK: Record<string, string> = {
-  'basic_a-1':
+  'prediction-1':
     'デューティ比はスイッチがONになっている時間の割合です。ONの時間が長くなるほど出力側へ電力が送られる時間も増えるため、出力電圧は下がるのではなく上がります。',
-  'basic_a-2':
+  'prediction-2':
     'デューティ比を変えても出力が変わらないとすると、この回路で電圧を制御する意味がなくなってしまいます。デューティ比は出力電圧を決める主要な要素です。',
-  'basic_b-1':
+  'review-1':
     '出力電圧は入力電圧にデューティ比を掛けた値になります。デューティ比が変われば出力電圧も変わるため、一定にはなりません。',
-  'basic_b-2':
+  'review-2':
     '出力電圧は入力電圧にデューティ比を掛けた値になります。デューティ比を上げれば出力電圧も上がる関係です。',
   'advanced-1':
     '発電量は電圧と電流の積で決まります。光の強さだけでは決まらず、動作点の電圧によって変化します。',
