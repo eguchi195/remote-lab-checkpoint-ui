@@ -2,6 +2,18 @@ import { useState } from 'react';
 import CheckpointModal from './components/CheckpointModal';
 import ExperimentStep from './components/ExperimentStep';
 import { QUESTIONS, type Level } from './data/questions';
+import KartePanel from './components/KartePanel';
+import type { KarteSummary } from './lib/karte';
+
+/**
+ * 成績カルテの表示例で用いるサンプル値。
+ * 実際のシステムではプレ／ポストテストの結果と操作ログを
+ * データベースから集計した実際の値が入る。
+ */
+const SAMPLE_SUMMARY: KarteSummary = {
+  pre: { score: 3, durationSec: 420 },
+  post: { score: 8, durationSec: 150 },
+};
 
 type Phase = 'question' | 'experiment' | 'finished';
 
@@ -83,6 +95,8 @@ export default function App() {
             </p>
           </div>
         )}
+
+        {phase === 'finished' && <KartePanel summary={SAMPLE_SUMMARY} />}
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function ExperimentStep({ onComplete }: Props) {
-  const [duty, setDuty] = useState(50);
+  const [duty, setDuty] = useState(0);
   const [measurements, setMeasurements] = useState<Measurement[]>([]);
 
   const measured = measurements.map((m) => m.duty);
